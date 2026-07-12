@@ -2,49 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { Heart, Pause, Play, ChevronDown, Check } from 'lucide-react'
-
-const LOVE_MESSAGES = [
-  'My heart whispers your name, {name}, with every beat.',
-  'Every moment with you feels like a beautiful dream, {name}.',
-  'You are the sunshine that brightens my darkest days, {name}.',
-  'My love for you grows deeper with each passing moment, {name}.',
-  'In a world full of chaos, you are my peaceful escape, {name}.',
-  'You make my heart smile in ways no one else ever could, {name}.',
-  'I fall in love with you more and more every single day, {name}.',
-  'Your love is the most precious gift I have ever received, {name}.',
-  'You turned my ordinary life into something extraordinary, {name}.',
-  'Loving you is the easiest and best thing I have ever done, {name}.',
-  'You are the reason I believe in forever, {name}.',
-  'My favorite place in the world is right next to you, {name}.',
-  'You make the hard days softer and the good days brighter, {name}.',
-  'I didn\'t know what love was until I found you, {name}.',
-  'You are my calm in the storm and my fire in the cold, {name}.',
-  'Every love song suddenly makes sense because of you, {name}.',
-  'You are the missing piece I never knew I was looking for, {name}.',
-  'Being loved by you feels like coming home, {name}.',
-  'You are my today and all of my tomorrows, {name}.',
-  'I love the way you make even the smallest moments feel magical, {name}.',
-  'You are my favorite notification, {name}.',
-  'You + me = my favorite love story, {name}.',
-  'Falling for you was like breathing — I just didn\'t notice at first, {name}.',
-  'You had me at hello, {name}.',
-  'My heart did a little flip the moment I saw you, {name}.',
-  'You are the plot twist I never saw coming, {name}.',
-  'Just thinking about you makes me smile like a fool, {name}.',
-  'You are my sunrise and my sunset, {name}.',
-  'I love you more than yesterday and less than tomorrow, {name}.',
-  'You are the best thing that has ever happened to me, {name}.',
-  'Together is my favorite place to be, {name}.',
-  'I want to grow old with you and still hold your hand, {name}.',
-  'You are the one my soul loves, {name}.',
-  'No matter where life takes me, my heart will always find its way back to you, {name}.',
-  'You are my once in a lifetime, {name}.',
-  'I carry your heart with me everywhere I go, {name}.',
-  'You are my greatest adventure and my sweetest destination, {name}.',
-  'Time stops when I look into your eyes, {name}.',
-  'I choose you, today and every day, {name}.',
-  'You are the love of my life and the song in my heart, {name}.',
-]
+import { LOVE_MESSAGES } from '../data/loveMessages'
 
 const HEART_EMOJIS = ['💗', '💕', '💖', '💘', '❤️', '💓']
 

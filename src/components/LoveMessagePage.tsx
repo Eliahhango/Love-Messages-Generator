@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Heart, Pause, Play, ChevronDown, Check } from 'lucide-react'
 
 const LOVE_MESSAGES = [
@@ -207,8 +208,32 @@ export default function LoveMessagePage() {
     }
   }
 
+  const siteUrl = window.location.origin
+  const previewImageUrl = `${siteUrl}/preview.svg`
+
   return (
     <div className="min-h-screen w-full bg-[#FFE4E6] flex flex-col items-center py-8 px-4 sm:px-6 md:px-8">
+      <Helmet>
+        <title>{`A Special Message For You, ${displayName}`}</title>
+        <meta name="description" content={`Dear ${displayName}, someone special wanted to share a beautiful collection of love messages with you.`} />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`A Special Message For You, ${displayName}`} />
+        <meta property="og:description" content={`Dear ${displayName}, someone special wanted to share a beautiful collection of love messages with you.`} />
+        <meta property="og:image" content={previewImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:site_name" content="Love Message Generator" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`A Special Message For You, ${displayName}`} />
+        <meta name="twitter:description" content={`Dear ${displayName}, someone special wanted to share a beautiful collection of love messages with you.`} />
+        <meta name="twitter:image" content={previewImageUrl} />
+      </Helmet>
+
       <audio ref={audioRef} loop preload="auto">
         <source src="/audio/in-love.mp3" type="audio/mpeg" />
       </audio>

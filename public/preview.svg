@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE4E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FECDD3;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="heart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FB7185;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E11D48;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="80" fill="#FECDD3" opacity="0.5"/>
+  <circle cx="1100" cy="530" r="120" fill="#FECDD3" opacity="0.5"/>
+  <circle cx="950" cy="80" r="60" fill="#FDA4AF" opacity="0.3"/>
+  
+  <!-- Floating hearts -->
+  <g opacity="0.6">
+    <path d="M150 200 C150 180, 180 180, 180 200 C180 230, 150 250, 150 250 C150 250, 120 230, 120 200 C120 180, 150 180, 150 200" fill="#FB7185"/>
+    <path d="M1050 150 C1050 135, 1075 135, 1075 150 C1075 170, 1050 185, 1050 185 C1050 185, 1025 170, 1025 150 C1025 135, 1050 135, 1050 150" fill="#F43F5E"/>
+    <path d="M200 450 C200 440, 220 440, 220 450 C220 465, 200 475, 200 475 C200 475, 180 465, 180 450 C180 440, 200 440, 200 450" fill="#FB7185"/>
+    <path d="M1000 400 C1000 388, 1025 388, 1025 400 C1025 418, 1000 430, 1000 430 C1000 430, 975 418, 975 400 C975 388, 1000 388, 1000 400" fill="#F43F5E"/>
+  </g>
+  
+  <!-- Main heart -->
+  <g transform="translate(600, 220)">
+    <path d="M0 -40 C0 -70, 50 -70, 50 -40 C50 0, 0 40, 0 40 C0 40, -50 0, -50 -40 C-50 -70, 0 -70, 0 -40" fill="url(#heart)"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="600" y="340" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#E11D48" text-anchor="middle">A Special Message</text>
+  <text x="600" y="400" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#E11D48" text-anchor="middle">For You</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="460" font-family="Arial, sans-serif" font-size="24" fill="#9F1239" text-anchor="middle" opacity="0.8">Someone special wanted to share love messages with you</text>
+  
+  <!-- Branding -->
+  <text x="600" y="560" font-family="Arial, sans-serif" font-size="18" fill="#BE123C" text-anchor="middle" opacity="0.6">Made with love by EliTechWiz</text>
+</svg>

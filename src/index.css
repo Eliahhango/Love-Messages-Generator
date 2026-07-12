@@ -7,3 +7,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-150%) scale(1.1) translateX(var(--drift, 20px));
+    opacity: 0;
+  }
+}
+
+.float-heart {
+  animation: floatUp var(--duration, 4s) ease-out forwards;
+}

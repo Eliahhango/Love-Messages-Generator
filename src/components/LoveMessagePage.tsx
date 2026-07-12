@@ -13,6 +13,19 @@ const LOVE_MESSAGES = [
   'Your love is the most precious gift I have ever received, {name}.',
 ]
 
+const HEART_EMOJIS = ['💗', '💕', '💖', '💘', '❤️', '💓']
+
+interface FloatingHeart {
+  id: number
+  left: number
+  size: number
+  duration: number
+  drift: number
+  emoji: string
+}
+
+let heartIdCounter = 0
+
 function generateMessageId(): string {
   const chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
   let result = ''
@@ -42,6 +55,7 @@ export default function LoveMessagePage() {
   const [isReady, setIsReady] = useState(false)
   const [newName, setNewName] = useState('')
   const [copied, setCopied] = useState(false)
+  const [floatingHearts, setFloatingHearts] = useState<FloatingHeart[]>([])
 
   const generatedUrl = isReady ? generateUrl(newName) : ''
 
@@ -53,6 +67,29 @@ export default function LoveMessagePage() {
     const audio = audioRef.current
     if (!audio) return
     audio.volume = 0.4
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newHeart: FloatingHeart = {
+        id: heartIdCounter++,
+        left: 10 + Math.random() * 80,
+        size: 14 + Math.random() * 14,
+        duration: 3 + Math.random() * 3,
+        drift: -30 + Math.random() * 60,
+        emoji: HEART_EMOJIS[Math.floor(Math.random() * HEART_EMOJIS.length)],
+      }
+      setFloatingHearts((prev) => [...prev.slice(-15), newHeart])
+    }, 700)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const cleanup = setInterval(() => {
+      setFloatingHearts((prev) => prev.filter((h) => Date.now() - h.id < 7000))
+    }, 2000)
+    return () => clearInterval(cleanup)
   }, [])
 
   useEffect(() => {
@@ -70,9 +107,7 @@ export default function LoveMessagePage() {
     } else {
       const playPromise = audio.play()
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Autoplay blocked by browser — user interaction required
-        })
+        playPromise.catch(() => {})
       }
     }
   }, [isPaused])
@@ -156,23 +191,24 @@ export default function LoveMessagePage() {
       </header>
 
       <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full overflow-hidden">
-        <div className="relative bg-[#FFE4E1] px-6 pt-6 pb-4 flex flex-col items-center">
-          <div className="absolute top-0 left-0 right-0 flex justify-between items-start px-4 pt-1">
-            <div className="flex gap-1">
-              <span className="text-base opacity-70">💗</span>
-              <span className="text-xs opacity-50 mt-1">💕</span>
-            </div>
-            <div className="flex gap-1">
-              <span className="text-xs opacity-60 mt-1">💗</span>
-              <span className="text-base opacity-70">💕</span>
-              <span className="text-sm opacity-50 mt-2">💗</span>
-            </div>
-            <div className="flex gap-1">
-              <span className="text-sm opacity-60 mt-1">💕</span>
-              <span className="text-xs opacity-40">💗</span>
-            </div>
+        <div className="relative bg-[#FFE4E1] px-6 pt-6 pb-4 flex flex-col items-center overflow-hidden h-32">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {floatingHearts.map((heart) => (
+              <span
+                key={heart.id}
+                className="float-heart absolute bottom-0"
+                style={{
+                  left: `${heart.left}%`,
+                  fontSize: `${heart.size}px`,
+                  '--duration': `${heart.duration}s`,
+                  '--drift': `${heart.drift}px`,
+                } as React.CSSProperties}
+              >
+                {heart.emoji}
+              </span>
+            ))}
           </div>
-          <div className="mt-6">
+          <div className="relative z-10 mt-6">
             <ChevronDown className="w-10 h-10 text-[#C41E3A] stroke-[3]" />
           </div>
         </div>

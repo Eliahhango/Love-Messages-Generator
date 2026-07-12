@@ -208,7 +208,7 @@ export default function LoveMessagePage() {
     }
   }
 
-  const previewImageUrl = 'https://love.elitechwiz.com/preview.png'
+  const previewImageUrl = 'https://love.elitechwiz.com/preview.jpg'
 
   return (
     <div className="min-h-screen w-full bg-[#FFE4E6] flex flex-col items-center py-8 px-4 sm:px-6 md:px-8">

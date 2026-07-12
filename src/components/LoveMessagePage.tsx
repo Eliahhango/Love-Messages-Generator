@@ -71,6 +71,7 @@ export default function LoveMessagePage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      if (isPaused) return
       const newHeart: FloatingHeart = {
         id: heartIdCounter++,
         left: Math.random() * 100,
@@ -83,7 +84,7 @@ export default function LoveMessagePage() {
     }, 700)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isPaused])
 
   useEffect(() => {
     const cleanup = setInterval(() => {

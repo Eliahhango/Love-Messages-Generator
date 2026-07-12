@@ -73,7 +73,7 @@ export default function LoveMessagePage() {
     const interval = setInterval(() => {
       const newHeart: FloatingHeart = {
         id: heartIdCounter++,
-        left: 10 + Math.random() * 80,
+        left: Math.random() * 100,
         size: 14 + Math.random() * 14,
         duration: 3 + Math.random() * 3,
         drift: -30 + Math.random() * 60,
@@ -192,7 +192,7 @@ export default function LoveMessagePage() {
 
       <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full overflow-hidden">
         <div className="relative bg-[#FFE4E1] px-6 pt-6 pb-4 flex flex-col items-center overflow-hidden h-32">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 w-full overflow-hidden pointer-events-none">
             {floatingHearts.map((heart) => (
               <span
                 key={heart.id}

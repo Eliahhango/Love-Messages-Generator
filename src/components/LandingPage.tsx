@@ -26,7 +26,7 @@ function generateUrl(name: string): string {
 }
 
 export default function LandingPage() {
-  const [name, setName] = useState('Loveness')
+  const [name, setName] = useState('')
   const [isGenerated, setIsGenerated] = useState(false)
   const [copied, setCopied] = useState(false)
 

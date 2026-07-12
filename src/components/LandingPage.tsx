@@ -29,11 +29,11 @@ export default function LandingPage() {
   const [name, setName] = useState('')
   const [isGenerated, setIsGenerated] = useState(false)
   const [copied, setCopied] = useState(false)
-
-  const generatedUrl = isGenerated ? generateUrl(name) : ''
+  const [generatedUrl, setGeneratedUrl] = useState('')
 
   const handleGenerate = () => {
     if (!name.trim()) return
+    setGeneratedUrl(generateUrl(name))
     setIsGenerated(true)
   }
 
@@ -55,13 +55,13 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FFE4E6] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full p-8 space-y-6">
+    <div className="min-h-screen w-full bg-[#FFE4E6] flex items-center justify-center px-4 sm:px-6 md:px-8">
+      <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 sm:p-8 space-y-5 sm:space-y-6">
         <header className="text-center space-y-1">
-          <h1 className="text-3xl sm:text-4xl font-bold text-red-600">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600">
             Love Message Generator
           </h1>
-          <p className="text-sm text-gray-400">made by EliTechWiz</p>
+          <p className="text-xs sm:text-sm text-gray-400">made by EliTechWiz</p>
         </header>
 
         <p className="text-gray-500 text-center leading-relaxed text-sm sm:text-base">
@@ -70,9 +70,9 @@ export default function LandingPage() {
           to show your affection.
         </p>
 
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 flex items-center justify-center gap-2 text-sm text-purple-700">
+        <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 flex items-center justify-center gap-2 text-xs sm:text-sm text-purple-700">
           <Music className="w-4 h-4 shrink-0" />
-          <span>Now with beautiful background music!</span>
+          <span className="text-center">Now with beautiful background music!</span>
           <span className="shrink-0">💝</span>
         </div>
 
@@ -80,7 +80,7 @@ export default function LandingPage() {
           <h2 className="text-center font-bold text-orange-700 flex items-center justify-center gap-1 text-sm sm:text-base">
             ✨ New Features ✨
           </h2>
-          <ul className="space-y-1.5 pl-5 list-disc text-sm text-gray-800 marker:text-gray-800">
+          <ul className="space-y-1.5 pl-5 list-disc text-xs sm:text-sm text-gray-800 marker:text-gray-800">
             {FEATURES.map((feature) => (
               <li key={feature}>
                 {feature}
@@ -112,7 +112,7 @@ export default function LandingPage() {
                 placeholder:text-gray-400
                 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600
                 transition-colors"
-              placeholder="Loveness"
+              placeholder="Enter name..."
             />
             <button
               type="submit"
@@ -127,18 +127,18 @@ export default function LandingPage() {
             <label className="block text-sm font-medium text-gray-700">
               Share this link with {name.trim()}:
             </label>
-            <div className="flex items-stretch rounded-lg overflow-hidden border border-gray-300">
+            <div className="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-0 rounded-lg overflow-hidden border border-gray-300">
               <input
                 readOnly
                 value={generatedUrl}
-                className="flex-1 min-w-0 px-4 py-2.5 bg-white text-gray-900 text-sm border-0 outline-none truncate"
+                className="flex-1 min-w-0 px-4 py-2.5 bg-white text-gray-900 text-xs sm:text-sm border-0 outline-none truncate sm:border-r sm:border-gray-300"
               />
               <button
                 onClick={handleCopy}
                 className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-sm shrink-0 cursor-pointer transition-colors"
               >
                 {copied ? (
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center justify-center gap-1">
                     <Check className="w-4 h-4" /> Copied!
                   </span>
                 ) : (

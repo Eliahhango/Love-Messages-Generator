@@ -24,8 +24,6 @@ interface FloatingHeart {
   emoji: string
 }
 
-let heartIdCounter = 0
-
 function generateMessageId(): string {
   const chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
   let result = ''
@@ -73,7 +71,7 @@ export default function LoveMessagePage() {
     const interval = setInterval(() => {
       if (isPaused) return
       const newHeart: FloatingHeart = {
-        id: heartIdCounter++,
+        id: Date.now() + Math.random(),
         left: Math.random() * 100,
         size: 14 + Math.random() * 14,
         duration: 3 + Math.random() * 3,

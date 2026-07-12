@@ -50,6 +50,12 @@ export default function LoveMessagePage() {
   }, [])
 
   useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.volume = 0.4
+  }, [])
+
+  useEffect(() => {
     if (isPaused) return
     const interval = setInterval(nextMessage, 4000)
     return () => clearInterval(interval)
@@ -138,7 +144,7 @@ export default function LoveMessagePage() {
 
   return (
     <div className="min-h-screen bg-[#FFE4E6] flex flex-col items-center py-8 px-4">
-      <audio ref={audioRef} loop volume={0.4} preload="auto">
+      <audio ref={audioRef} loop preload="auto">
         <source src="/audio/in-love.mp3" type="audio/mpeg" />
       </audio>
 
